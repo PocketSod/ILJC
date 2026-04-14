@@ -994,34 +994,578 @@
       gap: 0.75rem;
     }
 
+    /* ─── PRICING ──────────────────────────────────── */
+    #pricing { background: var(--forest); }
+
+    .pricing-intro {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--sage-light);
+      max-width: 58ch;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .price-card {
+      background: rgba(42, 82, 64, 0.35);
+      border: 1px solid rgba(107, 158, 134, 0.18);
+      border-radius: 1rem;
+      padding: 1.875rem 1.625rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+    .price-card.featured {
+      background: rgba(200, 144, 31, 0.12);
+      border-color: rgba(200, 144, 31, 0.3);
+    }
+    .price-tier {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 0.5rem;
+    }
+    .price-card h3 {
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.625rem;
+      letter-spacing: -0.02em;
+    }
+    .price-card .who {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    .price-card p {
+      font-size: 0.855rem;
+      line-height: 1.65;
+      color: var(--sage-light);
+    }
+    .price-note {
+      margin-top: 2rem;
+      padding: 1.375rem 1.75rem;
+      background: rgba(107, 158, 134, 0.08);
+      border: 1px solid rgba(107, 158, 134, 0.15);
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--sage-light);
+    }
+    .price-note strong { color: var(--cream); }
+
+    /* ─── LANGUAGES ─────────────────────────────────── */
+    #languages { background: var(--cream-2); border-top: 1px solid var(--cream-3); border-bottom: 1px solid var(--cream-3); }
+
+    .lang-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .lang-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .lang-group-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.25rem;
+    }
+    .lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      background: white;
+      border: 1px solid rgba(26, 24, 14, 0.1);
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      width: fit-content;
+    }
+    .lang-pill.lld {
+      background: var(--forest);
+      color: var(--cream);
+      border-color: transparent;
+    }
+    .lang-more {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    /* ─── COOPERATIVE STRUCTURE ────────────────────── */
+    #governance { background: var(--forest); }
+
+    .coop-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .gov-col-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .gov-col-label::before {
+      content: '';
+      width: 1.25rem;
+      height: 2px;
+      background: var(--saffron);
+      flex-shrink: 0;
+    }
+
+    .gov-body-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .gov-body {
+      display: flex;
+      gap: 1.125rem;
+      align-items: flex-start;
+      padding: 1.25rem 1.375rem;
+      background: rgba(42, 82, 64, 0.3);
+      border: 1px solid rgba(107, 158, 134, 0.15);
+      border-radius: 0.875rem;
+      transition: background 0.25s;
+    }
+    .gov-body:hover { background: rgba(42, 82, 64, 0.5); }
+    .gov-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(200, 144, 31, 0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .gov-body-text h4 {
+      font-family: var(--font-d);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .gov-body-text p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--sage-light);
+    }
+
+    .mem-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mem-tier {
+      padding: 1.375rem 1.625rem;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(107, 158, 134, 0.15);
+      position: relative;
+    }
+    .mem-tier.t-worker { background: rgba(200, 144, 31, 0.1); border-color: rgba(200, 144, 31, 0.25); }
+    .mem-tier.t-provisional { background: rgba(42, 82, 64, 0.35); }
+    .mem-tier.t-contract { background: rgba(42, 82, 64, 0.2); }
+
+    .mem-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.625rem;
+      border-radius: 2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.625rem;
+    }
+    .t-worker .mem-badge { background: rgba(200,144,31,0.2); color: var(--saffron); }
+    .t-provisional .mem-badge { background: rgba(107,158,134,0.2); color: var(--sage-light); }
+    .t-contract .mem-badge { background: rgba(107,158,134,0.12); color: var(--sage); }
+
+    .mem-tier h4 {
+      font-family: var(--font-d);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.375rem;
+    }
+    .mem-tier p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--sage-light);
+    }
+    .mem-tier ul {
+      margin-top: 0.625rem;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .mem-tier ul li {
+      font-size: 0.8rem;
+      color: var(--sage-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .mem-tier ul li::before { content: '→'; color: var(--saffron); font-size: 0.72rem; margin-top: 0.15em; flex-shrink: 0; }
+
+    .bylaws-note {
+      margin-top: 3rem;
+      padding: 1.625rem 2rem;
+      background: rgba(107, 158, 134, 0.07);
+      border: 1px solid rgba(107, 158, 134, 0.15);
+      border-radius: 0.875rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .bylaws-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(200, 144, 31, 0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .bylaws-text h4 {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .bylaws-text p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--sage-light);
+    }
+    .bylaws-text .bylaws-list {
+      margin-top: 0.625rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .bylaw-tag {
+      padding: 0.2rem 0.65rem;
+      background: rgba(107,158,134,0.12);
+      border: 1px solid rgba(107,158,134,0.2);
+      border-radius: 2rem;
+      font-size: 0.72rem;
+      color: var(--sage-light);
+    }
+
+    /* ─── WHO WE LEARN FROM ─────────────────────────── */
+    #learn { background: var(--cream); }
+
+    .lineage-intro {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      max-width: 58ch;
+      margin-bottom: 3rem;
+    }
+
+    .lineage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.125rem;
+    }
+    .lineage-card {
+      background: white;
+      border: 1px solid rgba(26, 24, 14, 0.08);
+      border-radius: 1rem;
+      padding: 1.5rem 1.625rem;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+    .lineage-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(26,24,14,0.08); }
+    .lineage-org {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .lineage-loc {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: var(--clay);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .lineage-card p {
+      font-size: 0.835rem;
+      line-height: 1.62;
+      color: var(--ink-soft);
+    }
+    .lineage-lesson {
+      margin-top: 0.875rem;
+      padding-top: 0.875rem;
+      border-top: 1px solid rgba(26,24,14,0.06);
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--forest-soft);
+      line-height: 1.55;
+    }
+
+    /* ─── DEVELOPMENT TIMELINE ──────────────────────── */
+    #timeline { background: var(--cream-2); border-top: 1px solid var(--cream-3); border-bottom: 1px solid var(--cream-3); }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 5.5rem;
+      top: 1rem;
+      bottom: 1rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--sage), transparent);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      align-items: start;
+      position: relative;
+    }
+    .tl-item::after {
+      content: '';
+      position: absolute;
+      left: calc(11rem - 5px);
+      top: 1.85rem;
+      width: 12px;
+      height: 12px;
+      background: var(--saffron);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px var(--cream-2), 0 0 0 5px rgba(200,144,31,0.2);
+    }
+    .tl-when {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      padding-top: 0.2rem;
+      text-align: right;
+      padding-right: 2.25rem;
+    }
+    .tl-what h4 {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+    .tl-what p {
+      font-size: 0.855rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    /* ─── HAMBURGER BUTTON ──────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      z-index: 201;
+      flex-shrink: 0;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.32s var(--ease), opacity 0.25s var(--ease);
+      transform-origin: center;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── MOBILE OVERLAY MENU ───────────────────────── */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--forest);
+      z-index: 198;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5.5rem 2rem 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.32s var(--ease);
+      overflow-y: auto;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+    .mobile-overlay ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-overlay li {
+      border-bottom: 1px solid rgba(107, 158, 134, 0.15);
+    }
+    .mobile-overlay a {
+      display: block;
+      padding: 0.9rem 0;
+      font-family: var(--font-d);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      transition: color 0.2s, transform 0.2s var(--ease);
+    }
+    .mobile-overlay a:hover { color: var(--saffron); transform: translateX(6px); }
+
+    .mob-cta-wrap {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
     /* ─── RESPONSIVE ────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
+      .nav-burger { display: flex; }
 
       .hero-inner {
         grid-template-columns: 1fr;
-        padding: 7rem 1.5rem 3.5rem;
-        gap: 2.5rem;
+        padding: 6.5rem 1.5rem 3rem;
+        gap: 2rem;
       }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      /* Fix grid overflow — without min-width:0 a long word can widen the 1fr column */
+      .hero-content { min-width: 0; }
+      .hero-h1 {
+        font-size: clamp(1.875rem, 9.5vw, 3rem);
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+      .hero-sub { font-size: 0.95rem; max-width: 100%; }
+
+      /* Tighten section padding */
+      .sec { padding: 3.5rem 1.5rem; }
+      #impact { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      .impact-inner { padding: 0 1.5rem; }
+      #join { padding: 3.5rem 1.5rem; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .steps { grid-template-columns: 1fr; }
       .steps::before { display: none; }
-      .impact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .foot-top { grid-template-columns: 1fr 1fr; }
+      .impact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .foot-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .foot-brand { grid-column: 1/-1; }
       .event-item { grid-template-columns: 64px 1fr; }
       .ev-tag { display: none; }
+
+      /* Single-column on mobile for dense grids */
+      .pricing-grid { grid-template-columns: 1fr; }
+      .lang-groups { grid-template-columns: 1fr 1fr; }
+
+      .coop-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .bylaws-note { grid-template-columns: 1fr; }
+      .bylaws-icon { display: none; }
+
+      .lineage-grid { grid-template-columns: 1fr; }
+
+      .tl-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .timeline-list::before { display: none; }
+      .tl-item::after { display: none; }
+      .tl-when { text-align: left; padding-right: 0; color: var(--saffron); font-size: 0.68rem; }
+
+      /* Reduce hero card stats size */
+      .stat .n { font-size: 1.5rem; }
     }
 
     @media (max-width: 500px) {
+      .sec { padding: 3rem 1.25rem; }
+      .hero-h1 { font-size: clamp(1.75rem, 10vw, 2.5rem); }
       .hero-stats { grid-template-columns: repeat(3, 1fr); }
+      .lang-groups { grid-template-columns: 1fr; }
       .foot-top { grid-template-columns: 1fr; }
       .case-metrics { grid-template-columns: repeat(3, 1fr); }
+      .coop-split { gap: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .sec-h2 { font-size: clamp(1.75rem, 7.5vw, 2.5rem); max-width: 100%; }
+      .join-h2 { font-size: clamp(2rem, 9vw, 3rem); }
     }
   </style>
 </head>
 <body>
+
+<!-- ═══ MOBILE OVERLAY ══════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true" role="dialog" aria-label="Navigation">
+  <ul role="list">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#languages">Languages</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#learn">Our Lineage</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#find">Find a Provider</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="mob-cta-wrap">
+    <a href="#join" class="btn btn-amber">Join the Co-op</a>
+    <a href="#contact" class="btn btn-ghost-light">Get a Quote</a>
+  </div>
+</div>
 
 <!-- ═══ NAV ════════════════════════════════════════════ -->
 <nav id="nav">
@@ -1031,11 +1575,15 @@
   </a>
   <ul class="nav-links" role="list">
     <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#calendar">Calendar</a></li>
     <li><a href="#find">Find a Provider</a></li>
     <li><a href="#join" class="nav-cta">Join</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ═══ HERO ════════════════════════════════════════════ -->
@@ -1069,9 +1617,11 @@
           <li>Language Justice Training</li>
           <li>Cultural Brokering</li>
           <li>Language Access Consulting</li>
+          <li>Multilingual Facilitation</li>
+          <li>ASL &amp; Disability Access</li>
         </ul>
         <div class="hero-stats">
-          <div class="stat"><span class="n">15+</span><span class="l">Languages</span></div>
+          <div class="stat"><span class="n">20+</span><span class="l">Languages</span></div>
           <div class="stat"><span class="n">100%</span><span class="l">Worker-Owned</span></div>
           <div class="stat"><span class="n">Indy</span><span class="l">Based</span></div>
         </div>
@@ -1095,31 +1645,37 @@
       <div class="svc-card">
         <div class="svc-icon">🗣</div>
         <h3>Interpretation</h3>
-        <p>Consecutive and simultaneous interpretation for healthcare, legal, educational, and community settings — in-person and remote.</p>
+        <p>Simultaneous and consecutive interpretation for community meetings, government hearings, medical appointments, legal proceedings, school conferences, and more — in-person and remote. We center the community's language: English speakers wear the headset.</p>
         <a href="#contact" class="svc-link">Request Service →</a>
       </div>
       <div class="svc-card">
         <div class="svc-icon">📄</div>
         <h3>Translation</h3>
-        <p>Accurate, culturally-aware document translation. Legal filings, educational materials, public-facing communications, and accessible formats.</p>
+        <p>Culturally adapted translation — not word-for-word, but meaning-for-meaning. Documents, websites, forms, educational materials, and outreach content. Specializing in languages of limited diffusion where commercial vendors fall short.</p>
         <a href="#contact" class="svc-link">Request Service →</a>
       </div>
       <div class="svc-card">
         <div class="svc-icon">📚</div>
-        <h3>Training</h3>
-        <p>Language justice workshops and professional development for interpreters, translators, and organizations building language-access capacity.</p>
+        <h3>Language Justice Training</h3>
+        <p>Workshops on language justice principles, interpreter training rooted in popular education, multilingual space design, organizational language justice assessments, and language access plan development for institutions.</p>
         <a href="#contact" class="svc-link">Request Training →</a>
       </div>
       <div class="svc-card">
         <div class="svc-icon">🤝</div>
         <h3>Cultural Brokering</h3>
-        <p>Bridging cultural and institutional gaps through cross-cultural mediation, intake support, and policy advising — beyond words, into full understanding.</p>
+        <p>Relationship-based, holistic support for engaging with linguistically diverse communities. Cultural navigation, intake support, and institutional bridging — going beyond words into full cultural understanding.</p>
         <a href="#contact" class="svc-link">Contact Us →</a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">⚖</div>
-        <h3>Language Justice Consulting</h3>
-        <p>Strategic guidance for organizations building equitable language-access policies, program design, and community accountability systems.</p>
+        <div class="svc-icon">🏛</div>
+        <h3>Multilingual Facilitation</h3>
+        <p>Meeting and event facilitation across languages and cultures. We guide conversations so every participant can engage meaningfully — regardless of the language they speak — from community forums to institutional convenings.</p>
+        <a href="#contact" class="svc-link">Request Facilitation →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤲</div>
+        <h3>ASL &amp; Disability Communication Access</h3>
+        <p>Language justice is disability justice. We integrate ASL interpretation and disability communication access — including AAC, tactile communication, and other modalities — as a core practice, not an accommodation.</p>
         <a href="#contact" class="svc-link">Contact Us →</a>
       </div>
     </div>
@@ -1151,6 +1707,96 @@
   </div>
 </section>
 
+<!-- ═══ PRICING TIERS ════════════════════════════════ -->
+<section id="pricing">
+  <div class="sec">
+    <p class="sec-label on-dark">Our Pricing Model</p>
+    <h2 class="sec-h2 on-dark">Rates built on <em>values,</em> not just the market</h2>
+    <p class="pricing-intro">We use a tiered pricing structure — clients with greater resources subsidize access for communities with the least. Revenue from institutional and corporate clients directly funds grassroots and community work.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card featured">
+        <p class="price-tier">Tier 1</p>
+        <h3>Grassroots Rate</h3>
+        <p class="who">Community orgs · Mutual aid groups · Unfunded coalitions · Individuals</p>
+        <p>Sliding scale or deeply discounted. Some pro bono work built into our annual budget. This is where our mission lives most visibly.</p>
+      </div>
+      <div class="price-card">
+        <p class="price-tier">Tier 2</p>
+        <h3>Nonprofit Rate</h3>
+        <p class="who">Nonprofits · Foundations · Universities · Health systems · Schools</p>
+        <p>Standard professional rates — competitive with commercial vendors, with higher quality, community-rooted service, and language justice expertise.</p>
+      </div>
+      <div class="price-card">
+        <p class="price-tier">Tier 3</p>
+        <h3>Government Rate</h3>
+        <p class="who">City-County · State agencies · Courts · Federal grantees</p>
+        <p>Full professional rates. These clients have budgets for language services and should pay accordingly. Revenue here subsidizes grassroots work.</p>
+      </div>
+      <div class="price-card">
+        <p class="price-tier">Tier 4</p>
+        <h3>Corporate Rate</h3>
+        <p class="who">For-profit businesses · Developers · Corporations</p>
+        <p>Premium rates reflecting both the market value of our services and our commitment to redistributive economics. Private sector pays the most.</p>
+      </div>
+    </div>
+
+    <p class="price-note"><strong>Language Justice Community Fund:</strong> A set-aside from annual revenue (target: 5–10%) is dedicated to pro bono services for grassroots organizations, community interpreter training, and language justice movement-building across Indianapolis.</p>
+  </div>
+</section>
+
+<!-- ═══ LANGUAGE PRIORITIES ════════════════════════ -->
+<section id="languages">
+  <div class="sec">
+    <p class="sec-label">Languages We Serve</p>
+    <h2 class="sec-h2">Leading with <em>languages</em> of limited diffusion</h2>
+
+    <div class="lang-groups">
+      <div class="lang-group">
+        <span class="lang-group-label">Southeast Asian</span>
+        <span class="lang-pill lld">Burmese</span>
+        <span class="lang-pill lld">Hakha Chin</span>
+        <span class="lang-pill lld">Falam</span>
+        <span class="lang-pill lld">Karen</span>
+        <span class="lang-pill lld">Zomi · Tedim</span>
+      </div>
+      <div class="lang-group">
+        <span class="lang-group-label">East African</span>
+        <span class="lang-pill lld">Kinyarwanda</span>
+        <span class="lang-pill lld">Kirundi</span>
+        <span class="lang-pill lld">Somali</span>
+        <span class="lang-pill lld">Amharic</span>
+        <span class="lang-pill lld">Oromo</span>
+        <span class="lang-pill lld">Swahili</span>
+      </div>
+      <div class="lang-group">
+        <span class="lang-group-label">Latin American Indigenous</span>
+        <span class="lang-pill lld">K'iche'</span>
+        <span class="lang-pill lld">Q'anjob'al</span>
+        <span class="lang-pill lld">Náhuatl</span>
+        <span class="lang-pill lld">Mixteco</span>
+      </div>
+      <div class="lang-group">
+        <span class="lang-group-label">Caribbean</span>
+        <span class="lang-pill lld">Haitian Creole</span>
+      </div>
+      <div class="lang-group">
+        <span class="lang-group-label">South Asian</span>
+        <span class="lang-pill lld">Punjabi</span>
+        <span class="lang-pill">Hindi</span>
+        <span class="lang-pill">Urdu</span>
+      </div>
+      <div class="lang-group">
+        <span class="lang-group-label">Other Core Languages</span>
+        <span class="lang-pill">Spanish</span>
+        <span class="lang-pill">Arabic</span>
+        <span class="lang-pill lld">ASL</span>
+      </div>
+    </div>
+    <p class="lang-more">+ Growth languages: Mandarin, Cantonese, French, Nepali, Vietnamese, Korean, Tagalog, and more based on community need.</p>
+  </div>
+</section>
+
 <!-- ═══ ABOUT / COOP ════════════════════════════════════ -->
 <section id="about">
   <div class="sec">
@@ -1158,39 +1804,54 @@
       <div>
         <p class="sec-label on-dark">Our Model</p>
         <h2 class="sec-h2 on-dark">A cooperative <em>owned</em> by language workers</h2>
-        <p class="about-body">ILJC is a worker-owned cooperative — our interpreters, translators, and language justice professionals are the owners. Every decision, every policy, every service rate is shaped by the people doing the work.</p>
-        <p class="about-body">We believe language access is a human right. Rooted in Indianapolis, we serve Marion County's richly multilingual communities with the depth and respect they deserve — while building sustainable livelihoods for language workers.</p>
+        <p class="about-body">ILJC is a worker-owned cooperative — our interpreters, translators, and language justice professionals are the owners. Every decision, every service rate, and every value is shaped collectively by the people who do the work. No outside investors. No executive salaries. Collective power.</p>
+        <p class="about-body">Marion County has over 143,000 residents who speak a language other than English at home. Yet most commercial vendors offer nothing for languages of limited diffusion — and none for many Indigenous Latin American languages. We exist to fill that gap, rooted in the communities we serve.</p>
         <div class="pull-quote">
-          <p>"Language justice means more than translation. It means the right to be fully understood — and to fully understand."</p>
+          <p>"To transform language culture and practice takes time, courage, humility, and commitment."</p>
+          <p style="font-size:0.75rem; font-style:normal; color:var(--sage); margin-top:0.5rem; font-family:var(--font-b); letter-spacing:0.04em;">— tilde Language Justice Cooperative</p>
         </div>
       </div>
       <div class="principles">
         <div class="principle">
           <span class="p-num">01</span>
           <div class="p-body">
-            <h4>Democratic Ownership</h4>
-            <p>Workers own and govern the cooperative. One worker, one vote — every voice counts in how we run.</p>
+            <h4>Language is Power</h4>
+            <p>When we express ourselves in the languages that make us who we are, we access the full depth of our thoughts, our histories, and our possibilities. Language justice disrupts the dominance of English.</p>
           </div>
         </div>
         <div class="principle">
           <span class="p-num">02</span>
           <div class="p-body">
-            <h4>Living Wages</h4>
-            <p>We are committed to sustainable, fair compensation for all language workers — no race to the bottom.</p>
+            <h4>Nothing About Us Without Us</h4>
+            <p>The cooperative is owned and governed by language workers themselves. Decisions about direction, pricing, services, and values are made collectively by the people who do the work.</p>
           </div>
         </div>
         <div class="principle">
           <span class="p-num">03</span>
           <div class="p-body">
-            <h4>Community Accountability</h4>
-            <p>We answer to the communities we serve, not shareholders. Local, transparent, mission-driven.</p>
+            <h4>Languages of Limited Diffusion First</h4>
+            <p>Communities with the fewest existing language services receive our deepest investment. Chin, Karen, Kinyarwanda, Somali, Haitian Creole, and Indigenous Latin American languages are centered, not added on.</p>
           </div>
         </div>
         <div class="principle">
           <span class="p-num">04</span>
           <div class="p-body">
-            <h4>Language as Liberation</h4>
-            <p>Access to language is a matter of dignity, equity, and justice. That is why we do this work.</p>
+            <h4>Language Justice is Racial Justice</h4>
+            <p>Language oppression is racial oppression. English-only policies and the exploitation of bilingual labor are tools of white supremacy. Our work names these systems and works to dismantle them.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="p-num">05</span>
+          <div class="p-body">
+            <h4>Language Justice is Disability Justice</h4>
+            <p>People communicate through spoken language, movement, signs, electronics, writing, and silence. All forms of communication are valid. We honor this breadth and refuse to reduce language to spoken words alone.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="p-num">06</span>
+          <div class="p-body">
+            <h4>Fair Compensation for Language Labor</h4>
+            <p>Bilingual people — especially women of color, immigrants, and refugees — have been expected to provide language labor for free. We reject this. Language work is skilled, emotionally demanding, and essential.</p>
           </div>
         </div>
       </div>
@@ -1264,20 +1925,9 @@
           <h4>María R.</h4>
           <div class="provider-tags">
             <span class="ptag">Spanish</span>
+            <span class="ptag">K'iche'</span>
             <span class="ptag">Interpretation</span>
-            <span class="ptag">Medical</span>
-          </div>
-          <a href="#" class="provider-contact">Contact →</a>
-        </div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-avatar">AS</div>
-        <div class="provider-info">
-          <h4>Ahmed S.</h4>
-          <div class="provider-tags">
-            <span class="ptag">Arabic</span>
-            <span class="ptag">Translation</span>
-            <span class="ptag">Legal</span>
+            <span class="ptag">Community</span>
           </div>
           <a href="#" class="provider-contact">Contact →</a>
         </div>
@@ -1288,8 +1938,9 @@
           <h4>Zawgyi O.</h4>
           <div class="provider-tags">
             <span class="ptag">Burmese</span>
+            <span class="ptag">Hakha Chin</span>
             <span class="ptag">Interpretation</span>
-            <span class="ptag">Community</span>
+            <span class="ptag">Medical</span>
           </div>
           <a href="#" class="provider-contact">Contact →</a>
         </div>
@@ -1300,8 +1951,48 @@
           <h4>Fartun K.</h4>
           <div class="provider-tags">
             <span class="ptag">Somali</span>
+            <span class="ptag">Amharic</span>
             <span class="ptag">Training</span>
+            <span class="ptag">Legal</span>
+          </div>
+          <a href="#" class="provider-contact">Contact →</a>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-avatar">JN</div>
+        <div class="provider-info">
+          <h4>Jean-Pierre N.</h4>
+          <div class="provider-tags">
+            <span class="ptag">Kinyarwanda</span>
+            <span class="ptag">Kirundi</span>
+            <span class="ptag">Interpretation</span>
+            <span class="ptag">Community</span>
+          </div>
+          <a href="#" class="provider-contact">Contact →</a>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-avatar">ML</div>
+        <div class="provider-info">
+          <h4>Marie-Lourdes P.</h4>
+          <div class="provider-tags">
+            <span class="ptag">Haitian Creole</span>
+            <span class="ptag">French</span>
+            <span class="ptag">Translation</span>
             <span class="ptag">Education</span>
+          </div>
+          <a href="#" class="provider-contact">Contact →</a>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-avatar">PS</div>
+        <div class="provider-info">
+          <h4>Paramjit S.</h4>
+          <div class="provider-tags">
+            <span class="ptag">Punjabi</span>
+            <span class="ptag">Hindi</span>
+            <span class="ptag">Interpretation</span>
+            <span class="ptag">Medical</span>
           </div>
           <a href="#" class="provider-contact">Contact →</a>
         </div>
@@ -1328,6 +2019,220 @@
         <div class="metric"><span class="num">25%</span><span class="lbl">Reduced Wait</span></div>
         <div class="metric"><span class="num">4.8★</span><span class="lbl">Satisfaction</span></div>
         <div class="metric"><span class="num">600+</span><span class="lbl">Sessions / yr</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COOPERATIVE STRUCTURE ════════════════════════════ -->
+<section id="governance">
+  <div class="sec">
+    <p class="sec-label on-dark">Cooperative Structure</p>
+    <h2 class="sec-h2 on-dark">How we <em>govern</em> ourselves</h2>
+
+    <div class="coop-split">
+
+      <!-- Governance Bodies -->
+      <div>
+        <p class="gov-col-label">Governance Bodies</p>
+        <div class="gov-body-list">
+          <div class="gov-body">
+            <div class="gov-icon">🏛</div>
+            <div class="gov-body-text">
+              <h4>General Assembly</h4>
+              <p>All worker-owners meet quarterly to make major decisions, set strategic direction, approve budgets, and admit new members. Meetings are multilingual with simultaneous interpretation.</p>
+            </div>
+          </div>
+          <div class="gov-body">
+            <div class="gov-icon">⚙</div>
+            <div class="gov-body-text">
+              <h4>Coordinating Committee</h4>
+              <p>A rotating committee of 3–5 worker-owners handles day-to-day operations, scheduling, client relationships, and financial management between General Assembly meetings.</p>
+            </div>
+          </div>
+          <div class="gov-body">
+            <div class="gov-icon">📊</div>
+            <div class="gov-body-text">
+              <h4>Finance Committee</h4>
+              <p>Manages bookkeeping, invoicing, pricing, and financial reporting. Following tilde's lesson: having people passionate about operations is as important as being passionate about language justice.</p>
+            </div>
+          </div>
+          <div class="gov-body">
+            <div class="gov-icon">📚</div>
+            <div class="gov-body-text">
+              <h4>Training &amp; Quality Committee</h4>
+              <p>Manages interpreter and translator skill development, peer mentorship, quality assurance, and onboarding of provisional members.</p>
+            </div>
+          </div>
+          <div class="gov-body">
+            <div class="gov-icon">🤝</div>
+            <div class="gov-body-text">
+              <h4>Community Advisory Circle</h4>
+              <p>LEP community members, partner organizations, and allies hold the cooperative accountable to its community mission. This circle does not govern the cooperative — it holds it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Membership Tiers -->
+      <div id="membership">
+        <p class="gov-col-label">Membership</p>
+        <div class="mem-tiers">
+          <div class="mem-tier t-worker">
+            <span class="mem-badge">Full Member</span>
+            <h4>Worker-Owner</h4>
+            <p>Full members who have completed a provisional period (minimum 6 months), demonstrated competence, committed to the cooperative's values, and been approved by the membership.</p>
+            <ul>
+              <li>Voting rights in the General Assembly</li>
+              <li>Share in governance and decision-making</li>
+              <li>Profit-sharing (patronage dividends)</li>
+              <li>Full voice in pricing, services, and strategic direction</li>
+            </ul>
+          </div>
+          <div class="mem-tier t-provisional">
+            <span class="mem-badge">In Trial Period</span>
+            <h4>Provisional Member</h4>
+            <p>New language workers in their trial period. They participate in work and training but do not yet have voting rights or profit-sharing. This is mutual assessment — the cooperative evaluates fit, and the provisional member evaluates whether the cooperative is right for them.</p>
+          </div>
+          <div class="mem-tier t-contract">
+            <span class="mem-badge">Project-Based</span>
+            <h4>Contract Worker</h4>
+            <p>Language workers who take on specific projects but are not cooperative members. The cooperative maintains relationships with a broader network for languages and specializations beyond current membership capacity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bylaws -->
+    <div class="bylaws-note" id="bylaws">
+      <div class="bylaws-icon">📜</div>
+      <div class="bylaws-text">
+        <h4>Bylaws in Development</h4>
+        <p>Following the example of tilde, which found that taking time with bylaws allowed them to "clarify their values and codify what it looked like to live those values as a cooperative," ILJC is investing significant time in thorough bylaws before launch. Technical assistance is being sought from the Indiana Cooperative Development Center, the Democracy at Work Institute, and sibling language justice cooperatives.</p>
+        <p style="margin-top:0.5rem;">The bylaws will address:</p>
+        <div class="bylaws-list">
+          <span class="bylaw-tag">Membership requirements &amp; processes</span>
+          <span class="bylaw-tag">Decision-making procedures</span>
+          <span class="bylaw-tag">Profit distribution</span>
+          <span class="bylaw-tag">Conflict resolution</span>
+          <span class="bylaw-tag">Member departure &amp; removal</span>
+          <span class="bylaw-tag">Community relationship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO WE LEARN FROM ════════════════════════════════ -->
+<section id="learn">
+  <div class="sec">
+    <p class="sec-label">Our Lineage</p>
+    <h2 class="sec-h2">Who we <em>learn</em> from</h2>
+    <p class="lineage-intro">The cooperative does not view other language justice organizations as competitors. It views them as siblings and allies. We have been shaped by the work of these organizations and remain in active relationship with them.</p>
+
+    <div class="lineage-grid">
+      <div class="lineage-card">
+        <p class="lineage-org">tilde Language Justice Cooperative</p>
+        <p class="lineage-loc">Durham, NC · Founded 2017</p>
+        <p>A majority Latine-owned, worker-owned cooperative providing interpretation, translation, training, and consulting. Includes a sibling organization, the tilde Education Fund, for training.</p>
+        <p class="lineage-lesson">"Taking time with bylaws allowed us to clarify our values and codify what it looks like to live those values as a cooperative."</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Community Language Cooperative</p>
+        <p class="lineage-loc">Denver, CO · Founded 2014</p>
+        <p>Worker-owned cooperative founded from community organizing in Southwest Denver's Westwood neighborhood. Pioneered the practice of centering the community's language — English speakers wear the headset.</p>
+        <p class="lineage-lesson">"We want every community to have their own interpreters." — CLC co-founder Indira Guzman</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Cenzontle Language Justice Cooperative</p>
+        <p class="lineage-loc">Asheville, NC · Founded 2017</p>
+        <p>Formed from CPC's interpreter training ecosystem. A sister cooperative to tilde, rooted in Western North Carolina's language justice movement.</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">San Luis Valley Language Justice Cooperative</p>
+        <p class="lineage-loc">Southern Colorado</p>
+        <p>Two women who attended a CLC training formed their own cooperative in a rural region. Taught us that the model scales to small communities, and that cooperatives can start with just two people who care.</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Language Justice Collaborative</p>
+        <p class="lineage-loc">New York, NY</p>
+        <p>Trains speakers of languages of limited diffusion as interpreters and supports worker cooperative formation. Taught us how to center LLD communities and build from community language needs surveys.</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Antena / Antena Aire</p>
+        <p class="lineage-loc">Los Angeles / Houston</p>
+        <p>Language justice and language experimentation collaborative. Their guide <em>How to Build Language Justice</em> is foundational — the clearest articulation of what a multilingual space looks like and how to build one.</p>
+        <p class="lineage-lesson">Language justice is about "a world with room for multiple languages to operate at all levels of society: from the kitchen table to the community meeting to the art museum to the City Council."</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Center for Participatory Change</p>
+        <p class="lineage-loc">Asheville, NC</p>
+        <p>Their Language Justice Curriculum is the model for our interpreter training — ten chapters grounded in popular education covering recovery techniques, queering language, race and ethnic identity in interpretation, and more.</p>
+      </div>
+      <div class="lineage-card">
+        <p class="lineage-org">Sins Invalid</p>
+        <p class="lineage-loc">Disability Justice Framework</p>
+        <p>Their statement that language justice is disability justice transformed our understanding. People communicate through spoken language, movement, signs, electronics, and silence — all are valid. This is a core principle, not an add-on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEVELOPMENT TIMELINE ══════════════════════════════ -->
+<section id="timeline">
+  <div class="sec">
+    <p class="sec-label">Development Timeline</p>
+    <h2 class="sec-h2">Building this <em>right,</em> together</h2>
+
+    <div class="timeline-list">
+      <div class="tl-item">
+        <span class="tl-when">Aug – Dec 2026</span>
+        <div class="tl-what">
+          <h4>Bilingual Connectors Active</h4>
+          <p>Bilingual Connectors Cohort 1 active in community. Connectors interested in the cooperative track self-identify. OEBI begins cooperative development support. Initial conversations with cooperative development advisors and sibling cooperatives.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">Jan – Mar 2027</span>
+        <div class="tl-what">
+          <h4>Cooperative Formation Study</h4>
+          <p>Interested connectors and community language workers meet monthly to study cooperative models, visit (virtually) with tilde, CLC, and Cenzontle, and assess feasibility. Business plan development begins.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">Apr – Jun 2027</span>
+        <div class="tl-what">
+          <h4>Bylaw Development &amp; Legal Incorporation</h4>
+          <p>Bylaw development. Legal incorporation under Indiana law. Business infrastructure setup. Advanced interpreter and translator training. Equipment acquisition. First provisional members identified.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">Jul – Sep 2027</span>
+        <div class="tl-what">
+          <h4>Soft Launch</h4>
+          <p>First paid interpretation and translation projects. First training and consulting engagements. Website live. Community Advisory Circle convened.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">Oct – Dec 2027</span>
+        <div class="tl-what">
+          <h4>First General Assembly</h4>
+          <p>Provisional member evaluations. First General Assembly. First community interpreter training cohort open to the public. Government and institutional client outreach intensifies.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">2028</span>
+        <div class="tl-what">
+          <h4>Full Operations</h4>
+          <p>Worker-owner cohort stabilizes at 8–12 members across 6+ languages. First patronage dividends distributed. Community Language Justice Fund distributes first pro bono grants. Evaluation of Year 1. Strategic planning for growth.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-when">2029 +</span>
+        <div class="tl-what">
+          <h4>Growth &amp; Movement-Building</h4>
+          <p>Expand language coverage. Deepen institutional contracts. Mentor emerging language justice cooperatives in other Indiana communities. Host first Indy Language Justice Convening. Advocate for language access ordinance provisions supporting cooperative contracting.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1361,21 +2266,25 @@
       <div class="foot-col">
         <h5>Services</h5>
         <ul>
-          <li><a href="#">Interpretation</a></li>
-          <li><a href="#">Translation</a></li>
-          <li><a href="#">Training</a></li>
-          <li><a href="#">Cultural Brokering</a></li>
-          <li><a href="#">Consulting</a></li>
+          <li><a href="#services">Interpretation</a></li>
+          <li><a href="#services">Translation</a></li>
+          <li><a href="#services">Language Justice Training</a></li>
+          <li><a href="#services">Cultural Brokering</a></li>
+          <li><a href="#services">Multilingual Facilitation</a></li>
+          <li><a href="#services">ASL &amp; Disability Access</a></li>
+          <li><a href="#pricing">Pricing Model</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Cooperative</h5>
         <ul>
-          <li><a href="#">About ILJC</a></li>
-          <li><a href="#">Our Members</a></li>
-          <li><a href="#">Join the Co-op</a></li>
-          <li><a href="#">Governance</a></li>
-          <li><a href="#">Bylaws</a></li>
+          <li><a href="#about">About ILJC</a></li>
+          <li><a href="#membership">Our Members</a></li>
+          <li><a href="#join">Join the Co-op</a></li>
+          <li><a href="#governance">Governance</a></li>
+          <li><a href="#bylaws">Bylaws</a></li>
+          <li><a href="#learn">Our Lineage</a></li>
+          <li><a href="#timeline">Timeline</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1407,17 +2316,17 @@
   // ── Multilingual hero words ─────────────────────────
   const words = [
     { t: 'Bienvenidos',      s: '4.5rem',  x: '4%',  y: '18%', d: '0.3s', op: 0.10 },
-    { t: 'Bienvenue',        s: '3rem',    x: '62%', y: '7%',  d: '0.6s', op: 0.08 },
-    { t: 'أهلاً وسهلاً',    s: '3.25rem', x: '72%', y: '52%', d: '0.9s', op: 0.09, rtl: true },
-    { t: 'Soo Dhawoow',      s: '2.5rem',  x: '6%',  y: '68%', d: '1.1s', op: 0.08 },
-    { t: 'ကြိုဆိုပါသည်',    s: '2.6rem',  x: '38%', y: '78%', d: '1.3s', op: 0.08 },
-    { t: 'Chào mừng',        s: '2.5rem',  x: '54%', y: '28%', d: '1.5s', op: 0.07 },
-    { t: '欢迎',             s: '5.5rem',  x: '82%', y: '78%', d: '1.7s', op: 0.07 },
-    { t: 'Willkommen',       s: '2rem',    x: '2%',  y: '44%', d: '1.9s', op: 0.06 },
-    { t: 'स्वागत है',       s: '2.75rem', x: '28%', y: '12%', d: '2.1s', op: 0.07 },
-    { t: 'Merhaba',          s: '2.25rem', x: '46%', y: '56%', d: '2.3s', op: 0.06 },
-    { t: 'እንኳን ደህና',        s: '2.5rem',  x: '88%', y: '30%', d: '2.5s', op: 0.07 },
-    { t: 'Xin chào',         s: '2rem',    x: '16%', y: '88%', d: '2.7s', op: 0.06 },
+    { t: 'Byenveni',         s: '3rem',    x: '62%', y: '7%',  d: '0.6s', op: 0.08 },
+    { t: 'Soo Dhawoow',      s: '2.5rem',  x: '6%',  y: '68%', d: '0.9s', op: 0.08 },
+    { t: 'ကြိုဆိုပါသည်',    s: '2.6rem',  x: '38%', y: '78%', d: '1.1s', op: 0.08 },
+    { t: 'Murakaza neza',    s: '2.25rem', x: '54%', y: '28%', d: '1.3s', op: 0.07 },
+    { t: 'ยินดีต้อนรับ',    s: '2.5rem',  x: '82%', y: '58%', d: '1.5s', op: 0.07 },
+    { t: 'ਜੀ ਆਇਆਂ ਨੂੰ',     s: '2.4rem',  x: '2%',  y: '44%', d: '1.7s', op: 0.07 },
+    { t: 'स्वागत है',       s: '2.75rem', x: '28%', y: '12%', d: '1.9s', op: 0.07 },
+    { t: 'Barka da zuwa',    s: '2.1rem',  x: '46%', y: '56%', d: '2.1s', op: 0.06 },
+    { t: 'እንኳን ደህና',        s: '2.5rem',  x: '88%', y: '30%', d: '2.3s', op: 0.07 },
+    { t: 'Xin chào',         s: '2rem',    x: '16%', y: '88%', d: '2.5s', op: 0.06 },
+    { t: 'Malti',            s: '2rem',    x: '70%', y: '86%', d: '2.7s', op: 0.05 },
   ];
 
   const bg = document.getElementById('langBg');
@@ -1438,10 +2347,10 @@
 
   // ── Language marquee ────────────────────────────────
   const langs = [
-    'Spanish','Burmese','Arabic','Somali','Haitian Creole',
-    'Vietnamese','Amharic','French','Chinese','Tigrinya',
-    'Swahili','Hindi','Portuguese','Nepali','Karen',
-    'Rohingya','Kinyarwanda','Oromo','Pashto','Dari',
+    'Spanish','Burmese','Hakha Chin','Somali','Haitian Creole',
+    'Kinyarwanda','Amharic','Kirundi','Karen','Falam',
+    'Swahili','Punjabi','K\'iche\'','Oromo','Q\'anjob\'al',
+    'Náhuatl','ASL','Mixteco','Zomi','Hindi',
   ];
   const track = document.getElementById('marqueeTrack');
   [...langs, ...langs].forEach(lang => {
@@ -1450,6 +2359,31 @@
     s.innerHTML = `${lang}<span class="m-dot"></span>`;
     track.appendChild(s);
   });
+
+  // ── Mobile hamburger nav ────────────────────────────
+  const burger  = document.getElementById('navBurger');
+  const overlay = document.getElementById('mobileOverlay');
+
+  function closeMenu() {
+    burger.classList.remove('open');
+    overlay.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    overlay.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+    overlay.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 </script>
 </body>
 </html>
