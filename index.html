@@ -635,73 +635,29 @@
     }
     .cal-header .sec-h2 { margin-bottom: 0; }
 
-    .event-list {
+    .luma-embed-wrap {
       border: 1px solid rgba(26, 24, 14, 0.09);
       border-radius: 1rem;
       overflow: hidden;
-    }
-    .event-item {
-      display: grid;
-      grid-template-columns: 72px 1fr auto;
-      gap: 1.5rem;
-      padding: 1.375rem 1.875rem;
       background: white;
-      border-bottom: 1px solid rgba(26, 24, 14, 0.06);
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s;
     }
-    .event-item:last-child { border-bottom: none; }
-    .event-item:hover { background: var(--cream); }
-
-    .ev-date { text-align: center; }
-    .ev-date .mo {
+    .luma-embed-wrap iframe {
       display: block;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      width: 100%;
+    }
+    .cal-ical-link {
+      margin-top: 1rem;
+      text-align: right;
+    }
+    .cal-ical-link a {
+      font-size: 0.85rem;
       color: var(--saffron);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
     }
-    .ev-date .dy {
-      display: block;
-      font-family: var(--font-d);
-      font-size: 2.25rem;
-      font-weight: 900;
-      color: var(--ink);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-    .ev-info h4 {
-      font-family: var(--font-d);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
-    }
-    .ev-meta {
-      font-size: 0.78rem;
-      color: var(--ink-soft);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .ev-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.2rem 0.7rem;
-      border-radius: 2rem;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-    .tag-interp  { background: rgba(28,58,44,0.1);  color: var(--forest-soft); }
-    .tag-training{ background: rgba(155,74,50,0.1);  color: var(--clay); }
-    .tag-community{background: rgba(200,144,31,0.1); color: var(--saffron); }
-    .tag-consult { background: rgba(107,158,134,0.15); color: var(--forest-mid); }
+    .cal-ical-link a:hover { opacity: 0.75; }
 
     /* ─── FIND A PROVIDER ───────────────────────────── */
     #find { background: var(--cream-2); border-top: 1px solid var(--cream-3); }
@@ -1867,43 +1823,27 @@
         <p class="sec-label">Member Calendar</p>
         <h2 class="sec-h2">Upcoming <em>events</em></h2>
       </div>
-      <a href="#" class="btn btn-amber">View Full Calendar</a>
+      <a href="https://luma.com/iljc" target="_blank" rel="noopener" class="btn btn-amber">View Full Calendar</a>
     </div>
 
-    <div class="event-list" role="list">
-      <a href="#" class="event-item" role="listitem">
-        <div class="ev-date"><span class="mo">Apr</span><span class="dy">18</span></div>
-        <div class="ev-info">
-          <h4>Medical Interpretation Workshop — Level II</h4>
-          <p class="ev-meta"><span>9:00 AM – 1:00 PM</span><span>·</span><span>Eskenazi Health, Indy</span></p>
-        </div>
-        <span class="ev-tag tag-training">Training</span>
-      </a>
-      <a href="#" class="event-item" role="listitem">
-        <div class="ev-date"><span class="mo">Apr</span><span class="dy">22</span></div>
-        <div class="ev-info">
-          <h4>ILJC Monthly Member Assembly</h4>
-          <p class="ev-meta"><span>6:30 PM – 8:00 PM</span><span>·</span><span>Virtual · Zoom</span></p>
-        </div>
-        <span class="ev-tag tag-community">Community</span>
-      </a>
-      <a href="#" class="event-item" role="listitem">
-        <div class="ev-date"><span class="mo">May</span><span class="dy">03</span></div>
-        <div class="ev-info">
-          <h4>Language Access Audit — City-County Council</h4>
-          <p class="ev-meta"><span>All Day</span><span>·</span><span>City-County Building</span></p>
-        </div>
-        <span class="ev-tag tag-consult">Consulting</span>
-      </a>
-      <a href="#" class="event-item" role="listitem">
-        <div class="ev-date"><span class="mo">May</span><span class="dy">10</span></div>
-        <div class="ev-info">
-          <h4>Language Justice 101 — Community Training</h4>
-          <p class="ev-meta"><span>10:00 AM – 2:00 PM</span><span>·</span><span>La Plaza, Indianapolis</span></p>
-        </div>
-        <span class="ev-tag tag-training">Training</span>
-      </a>
+    <div class="luma-embed-wrap">
+      <iframe
+        src="https://luma.com/embed/calendar/cal-X3AX7BxKEdAT8me/events"
+        width="100%"
+        height="450"
+        frameborder="0"
+        style="border: none;"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+        title="ILJC Events Calendar"
+        loading="lazy"
+      ></iframe>
     </div>
+
+    <p class="cal-ical-link">
+      <a href="https://luma.com/iljc/ics" target="_blank" rel="noopener">+ Subscribe in your calendar app (iCal)</a>
+    </p>
   </div>
 </section>
 
@@ -2290,7 +2230,7 @@
       <div class="foot-col">
         <h5>Connect</h5>
         <ul>
-          <li><a href="#">Calendar</a></li>
+          <li><a href="https://luma.com/iljc" target="_blank" rel="noopener">Calendar</a></li>
           <li><a href="mailto:info@indyljc.org">info@indyljc.org</a></li>
           <li><a href="tel:+13175550000">Emergency Line</a></li>
           <li><a href="#">Newsletter</a></li>

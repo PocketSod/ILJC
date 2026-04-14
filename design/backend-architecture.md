@@ -23,7 +23,7 @@
 |---|---|---|---|---|---|
 | **Built-in auth** | ❌ None | ✅ Full (email, magic link, OAuth) | ❌ None | ✅ Full | ⚠️ Google accounts only |
 | **Member self-service portal** | ⚠️ Forms only | ✅ RLS per member | ❌ No | ✅ Yes | ⚠️ AppScript web app required |
-| **Calendar** | ⚠️ Admin view | ✅ Custom + real-time | ❌ No | ✅ Custom | ✅ Google Calendar — best-in-class |
+| **Calendar** | ⚠️ Admin view | ✅ Custom + real-time | ❌ No | ✅ Custom | ✅ Google Calendar — best-in-class (but replaced by Luma) |
 | **Complex queries / directory** | ⚠️ Limited | ✅ Full SQL | ❌ No | ⚠️ NoSQL | ⚠️ Sheets API; limited filtering |
 | **File / photo storage** | ⚠️ Attachments | ✅ S3-compatible | ⚠️ CDN only | ✅ Yes | ✅ Google Drive |
 | **Email / automation** | ⚠️ Paid | ✅ Edge Functions | ❌ No | ✅ Yes | ✅ AppScript + Gmail |
@@ -86,7 +86,7 @@
 
 ---
 
-## 4. Decision: Supabase + Google Calendar (Hybrid) ✅
+## 4. Decision: Supabase + Luma (Hybrid) ✅
 
 ### Final Architecture
 
@@ -96,27 +96,29 @@
 | **Member directory** | Supabase Postgres | Full SQL search; scales cleanly |
 | **Service requests** | Supabase + Edge Functions | Structured intake → email → member routing |
 | **Membership applications** | Supabase table | Same pipeline as requests; admin review flow |
-| **Calendar — events** | **Google Calendar** | Members already know it; iCal; embeds on site; no custom UI |
+| **Calendar — events** | **Luma (lu.ma)** | Beautiful embed, free, RSVP built-in, no Google dependency |
 | **File storage** | Supabase Storage | Member photos; docs; linked from profiles |
 | **Email** | Resend (via Supabase Edge Functions) | 3,000 free/month; transactional |
 | **Documents / shared files** | Google Drive | Bylaws, templates, meeting notes — familiar and free |
 
 ### Why the Hybrid Wins
 
-1. **Google Calendar eliminates the hardest frontend to build.** A custom calendar UI with member login, event creation, editing, and conflict detection is weeks of development. Google Calendar replaces it with zero code — embed the public calendar with one `<iframe>`.
+1. **Luma eliminates the hardest frontend to build.** A custom calendar UI with event creation, RSVP, and discovery is weeks of development. Luma replaces it with zero code — embed the public calendar with one `<iframe>` or script tag.
 
-2. **Members use one familiar tool for scheduling.** Language workers add their availability and upcoming events directly in Google Calendar, the same app they use personally. Adoption is instant.
+2. **Luma looks better than Google Calendar's embed.** Google Calendar's iframe is dated and nearly impossible to style. Luma renders a clean, modern event grid or agenda that matches a professional cooperative brand.
 
-3. **Supabase still owns the member identity and directory.** When an org searches for a Burmese interpreter, that query hits Postgres. When a member logs in, Supabase Auth controls access. Google Calendar is a view layer, not the source of truth for member data.
+3. **RSVP and attendance tracking are built in.** Luma gives each event its own page with registration, attendee list, and reminders — no custom dev needed.
 
-4. **iCal bridge is automatic.** Every Google Calendar has a public iCal URL. Organizations and members can subscribe in Outlook, Apple Calendar, or any other app without any development.
+4. **No Google dependency.** This aligns with the cooperative's data sovereignty values. Members don't need Google accounts to manage events.
+
+5. **Supabase still owns the member identity and directory.** When an org searches for a Burmese interpreter, that query hits Postgres. When a member logs in, Supabase Auth controls access. Luma is a view and discovery layer, not the source of truth for member data.
 
 ### Revised Cost
 
 | Service | Cost |
 |---|---|
 | Supabase | **Free** (scales to $25/month if needed) |
-| Google Calendar | **Free** (personal Google accounts work fine; no Workspace license needed for calendar sharing) |
+| Luma | **Free** (free org account; unlimited events and RSVPs) |
 | Resend (email) | **Free** up to 3,000 emails/month |
 | GitHub Pages (hosting) | **Free** |
 | **Total** | **$0/month to start** |
@@ -269,11 +271,15 @@ flowchart TD
     ADMP[Admin Panel\nApplications · Members · Requests]
   end
 
+  %% ── LUMA ─────────────────────────────────────────────
+  subgraph LM ["Luma (lu.ma — free)"]
+    LCAL[Luma Org Page\nILJC Events Calendar]
+    LICAL[/iCal Subscribe URL/]
+  end
+
   %% ── GOOGLE ───────────────────────────────────────────
   subgraph GWS ["Google (Free personal accounts)"]
-    GCAL[Google Calendar\nShared ILJC Calendar]
     GDRIVE[Google Drive\nBylaws · Docs · Templates]
-    ICAL[/iCal Subscribe URL/]
   end
 
   %% ── SUPABASE ─────────────────────────────────────────
@@ -292,8 +298,8 @@ flowchart TD
   HP --> DIR & CAL & REQ & APP
 
   DIR  -->|"SQL: language + service filter"| DB
-  CAL  -->|"iframe embed"| GCAL
-  GCAL -->|"public iCal feed"| ICAL
+  CAL  -->|"iframe / widget embed"| LCAL
+  LCAL -->|"public iCal feed"| LICAL
 
   REQ  -->|"INSERT service_requests"| DB
   DB   -->|trigger| FN
@@ -312,8 +318,8 @@ flowchart TD
   PORT -->|upload photo| STR
   STR  -->|photo_url stored| DB
 
-  MB  -->|"add / edit events directly"| GCAL
-  GCAL -->|"live on public calendar"| CAL
+  MB  -->|"add / edit events directly"| LCAL
+  LCAL -->|"live on public calendar"| CAL
 
   PORT -->|"SELECT my assigned requests"| DB
   PORT -->|"UPDATE status → confirmed/declined"| DB
@@ -321,15 +327,14 @@ flowchart TD
   FN   -->|confirmation email to org| EM
 
   %% ── ADMIN FLOWS ──────────────────────────────────────
-  AD --> ADMP & GCAL & GDRIVE
+  AD --> ADMP & LCAL & GDRIVE
   ADMP -->|login| AUTH
   AUTH -->|JWT + admin role| ADMP
 
   ADMP -->|"SELECT applications"| DB
   ADMP -->|"APPROVE → create auth user"| AUTH
   AUTH -->|new member account| DB
-  FN   -->|welcome email + Calendar invite| EM
-  FN   -->|add to shared Calendar| GCAL
+  FN   -->|welcome email + Luma invite| EM
 
   ADMP -->|"manage members · requests"| DB
   GDRIVE -->|"shared bylaws · templates"| MB
@@ -342,27 +347,28 @@ flowchart TD
 ```
 GitHub Pages (static)
   └── index.html, services.html, directory.html, about.html
-  └── calendar.html         ← embeds Google Calendar <iframe>; no custom backend
+  └── calendar.html         ← embeds Luma widget; no custom backend
   └── member-portal/        ← vanilla JS or lightweight framework; talks to Supabase
         └── login.html
         └── profile.html
-        └── my-events.html  ← links out to member's Google Calendar for editing
+        └── my-events.html  ← links out to Luma org page for event management
         └── requests.html
 
 Supabase (hosted, free tier)
   └── Auth            → member login / session management
   └── Postgres DB     → members, service_requests, applications
-  │                      (events table removed — Google Calendar handles this)
+  │                      (events table not needed — Luma handles this)
   └── Row-Level Sec.  → members can only touch their own rows
   └── Storage         → member photos, translated docs
   └── Edge Functions  → email triggers, member matching algorithm
 
-Google Calendar (free, personal Google accounts)
-  └── One shared "ILJC Events" calendar (admin-owned, members invited as editors)
-  └── Optional: per-member sub-calendars that feed into the main calendar
-  └── Public embed URL → calendar.html on the site
+Luma (lu.ma — free org account)
+  └── One ILJC org page with public event calendar
+  └── Each event gets its own Luma page with RSVP
+  └── Embeddable calendar widget → calendar.html on the site
   └── Public iCal URL → any calendar app can subscribe
-  └── Members add/edit events directly in Google Calendar (zero training)
+  └── Admins/co-hosts add events via Luma dashboard (zero dev)
+  └── Attendees RSVP without needing a Luma account
 
 Google Drive (free)
   └── Bylaws, governance docs, meeting minutes
@@ -371,7 +377,7 @@ Google Drive (free)
 Email (Resend — free tier: 3,000 emails/month)
   └── New service request → admin + matched members
   └── Application received → admin
-  └── Application approved → welcome email + Google Calendar invite to new member
+  └── Application approved → welcome email + link to Luma org page
   └── Booking confirmed → org contact
 ```
 
@@ -382,7 +388,7 @@ Email (Resend — free tier: 3,000 emails/month)
 ### Phase 1 — Static + Forms (no auth yet)
 - Service request form → Supabase table → admin email via Edge Function
 - Membership application form → Supabase table → admin email
-- **Public calendar: embed shared Google Calendar** — admin creates ILJC Google Calendar, invites members as editors, embeds public URL on site (zero dev)
+- **Public calendar: embed Luma widget** — admin creates ILJC org on lu.ma, adds upcoming events, embeds calendar widget on site (zero dev)
 - Public directory from Supabase `members` table (admin-populated for now)
 - Google Drive folder set up for shared governance docs
 

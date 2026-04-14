@@ -1,5 +1,5 @@
 # ILJC Backend Setup — Task List
-### Supabase + Google Calendar Hybrid
+### Supabase + Luma Hybrid
 
 Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
@@ -50,7 +50,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] Create `member_services` join table
 - [ ] Create `service_requests` table
 - [ ] Create `applications` table
-- [ ] **Skip** `events` table — Google Calendar handles this
+- [ ] **Skip** `events` table — Luma handles this
 
 ### 1.3 Row-Level Security (RLS)
 - [ ] Enable RLS on `members` table
@@ -122,54 +122,40 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
 ---
 
-## Phase 2 — Google Calendar Setup
+## Phase 2 — Luma Calendar Setup
 
-### 2.1 Create the ILJC Calendar
-- [ ] Create or designate a Google account as the ILJC admin account (e.g., `calendar@indyljc.org` or a shared Gmail)
-- [ ] In Google Calendar, create a new calendar: **"ILJC Events & Availability"**
-- [ ] Set calendar description: "Public calendar for Indy Language Justice Cooperative — trainings, events, and member availability"
+### 2.1 Create the ILJC Org on Luma
+- [ ] Go to [lu.ma](https://lu.ma) and create a free account using the ILJC admin email
+- [ ] Create a new **Community / Org** (not a personal profile): name it **"Indy Language Justice Cooperative"**
+- [ ] Set the handle: `lu.ma/iljc` (or closest available)
+- [ ] Add description, logo, and cover image using ILJC brand assets
 - [ ] Set timezone: `America/Indiana/Indianapolis`
+- [ ] Set location: Indianapolis, IN
 
-### 2.2 Configure Sharing & Access
-- [ ] Set calendar visibility to **"Public — make all event details visible"**
-- [ ] Get the public calendar embed URL:
-  - Calendar Settings → Integrate Calendar → copy `<iframe>` embed code
-- [ ] Get the public iCal (`.ics`) URL:
-  - Calendar Settings → Integrate Calendar → copy "Public address in iCal format"
-- [ ] Save both URLs — they go into the ILJC website
-- [ ] Invite each member as an editor:
-  - Calendar Settings → Share with specific people → add member Gmail → "Make changes to events"
-- [ ] Create a brief 1-page guide for members: "How to add your events to the ILJC calendar" (save to Google Drive)
+### 2.2 Configure Access & Co-Hosts
+- [ ] Invite member co-hosts who will add and manage events:
+  - Luma org Settings → Members → Invite by email → role "Co-host"
+- [ ] Co-hosts can create events under the ILJC org page without needing the admin password
+- [ ] Create a brief guide for members: "How to add your events on Luma" (save to Google Drive)
 
-### 2.3 Calendar Structure (Optional — recommended)
-- [ ] Create color-coded event categories by adding a naming convention to event titles:
-  - `[Training]` — red
-  - `[Interpretation]` — blue
-  - `[Community]` — green
-  - `[Availability]` — gray
-- [ ] Alternatively, create separate sub-calendars per service type and overlay them on the main calendar
-- [ ] Set default event duration to 1 hour
+### 2.3 Create Initial Events
+- [ ] Add any known upcoming events (trainings, community meetings, service dates) so the calendar isn't empty at launch
+- [ ] Use Luma's event tags / categories to organize:
+  - `Training`, `Interpretation`, `Community Meeting`, `Availability`
+- [ ] Set events to **public** so they appear on the org page without login
 
 ### 2.4 Embed Calendar on Website
+- [ ] Go to the ILJC Luma org page → Settings → Embed
+- [ ] Copy the embed code (Luma provides a `<script>` + `<div>` snippet)
 - [ ] Open `index.html`, find the calendar preview section (`id="calendar"`)
-- [ ] Replace the static event list HTML with the Google Calendar `<iframe>` embed:
-  ```html
-  <iframe
-    src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=America%2FIndiana%2FIndianapolis&mode=AGENDA&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
-    style="border:0; width:100%; height:480px;"
-    frameborder="0"
-    scrolling="no"
-    title="ILJC Events Calendar"
-    loading="lazy">
-  </iframe>
-  ```
-- [ ] Style the iframe container to match the ILJC design (cream background, rounded corners)
+- [ ] Replace the static event list HTML with the Luma embed snippet
+- [ ] Style the container to match the ILJC design (cream background, rounded corners)
 - [ ] Add the iCal subscribe link below the embed:
   ```html
-  <a href="YOUR_ICAL_URL">Subscribe in your calendar app →</a>
+  <a href="https://lu.ma/iljc/ics">Subscribe in your calendar app →</a>
   ```
 - [ ] Test embed renders correctly at desktop and mobile widths
-- [ ] Add Google Calendar link for members: "Add your events → [Open ILJC Calendar]"
+- [ ] Add a "View all events →" link to the full Luma org page
 
 ---
 
@@ -195,7 +181,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
   **Application approved — welcome** (to new member)
   > Subject: Welcome to ILJC, {name}!
   > Your account is ready. Log in at iljc.pocketsod.com/member-portal
-  > You've been invited to the ILJC Google Calendar.
+  > View and add events on our Luma page: lu.ma/iljc
 
   **Booking confirmed** (to requesting org)
   > Subject: Your request is confirmed — {service_type} on {date}
@@ -215,8 +201,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
   - Called manually by admin from the admin panel
   - Creates Supabase auth user for the approved member
   - Inserts row in `members` table
-  - Sends welcome email with login link
-  - Sends Google Calendar invite via Google Calendar API (optional — can skip for now)
+  - Sends welcome email with login link and Luma org page link
 - [ ] Create Edge Function: `supabase functions new confirm-booking`
   - Called when admin updates `service_requests.status = 'confirmed'`
   - Sends confirmation email to the requesting org
@@ -312,10 +297,10 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
 ### 6.3 My Events Page
 - [ ] Create `member-portal/my-events.html`
-- [ ] Display message explaining Google Calendar is used for scheduling
-- [ ] Embed a direct link to the shared ILJC Google Calendar for the member to add events
-- [ ] Link to the member guide: "How to add your availability and events"
-- [ ] Embed a personal calendar view (optional): link to member's own Google Calendar
+- [ ] Display message explaining Luma is used for public event management
+- [ ] Embed a direct link to the ILJC Luma org page for the member to add/manage events
+- [ ] Link to the member guide: "How to add your events on Luma"
+- [ ] Embed the Luma calendar widget so members can see upcoming events without leaving the portal
 
 ### 6.4 My Requests Page
 - [ ] Create `member-portal/requests.html`
@@ -367,7 +352,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] **Admin → Approve member:** Approve the test application; verify auth account created, welcome email sent
 - [ ] **Member → Login:** Use magic link to log in as the new test member
 - [ ] **Member → Profile:** Edit name, bio, upload photo; verify changes appear in public directory
-- [ ] **Member → Calendar:** Add a test event to the ILJC Google Calendar; verify it appears on the website embed
+- [ ] **Member → Calendar:** Add a test event on the ILJC Luma org page; verify it appears on the website embed
 - [ ] **Admin → Assign request:** Assign the test service request to the test member
 - [ ] **Member → Accept booking:** Test member confirms the request; verify confirmation email sent to org
 
@@ -378,7 +363,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
 ### 8.3 Mobile Check
 - [ ] Test all portal pages on mobile viewport (375px)
-- [ ] Test Google Calendar embed on mobile
+- [ ] Test Luma calendar embed on mobile
 - [ ] Test login magic link flow on mobile email client
 - [ ] Test form submissions on mobile (keyboard, file upload)
 
@@ -391,7 +376,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] Update all `href="#"` placeholder links in `index.html` to point to real pages
 - [ ] Swap placeholder phone/email in footer with real contact info
 - [ ] Swap placeholder provider names in directory section with real members (or remove until portal is live)
-- [ ] Swap placeholder calendar events with real upcoming events
+- [ ] Add real upcoming events to the ILJC Luma org page so the embed isn't empty at launch
 - [ ] Test Resend email deliverability (check spam, configure SPF/DKIM records)
 - [ ] Verify Supabase project is not paused (free tier pauses after 1 week of inactivity — upgrade to Pro if needed)
 - [ ] Set up Supabase project backups (Settings → Database → Backups)
