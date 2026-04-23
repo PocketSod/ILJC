@@ -120,24 +120,23 @@
       overflow: hidden;
     }
 
-    /* Full-width photo banner — sits above the text content */
-    .hero-photo {
-      width: 100%;
-      height: 34vw;
-      min-height: 200px;
-      max-height: 480px;
-      background: url('brand-assets/Background.png') center 55% / cover no-repeat;
+    /* Full natural-width image — no cropping, full mural visible */
+    .hero-photo-wrap {
       position: relative;
-      flex-shrink: 0;
+      width: 100%;
     }
-    /* Razor-thin fade at the very bottom edge */
-    .hero-photo::after {
+    .hero-photo-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero-photo-wrap::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 6%;
+      height: 20%;
       background: linear-gradient(to bottom, transparent, var(--forest));
       pointer-events: none;
     }
@@ -194,12 +193,11 @@
       width: 100%;
       max-width: 1240px;
       margin: 0 auto;
-      padding: 3rem 2.5rem 5rem;
+      padding: 2.5rem 2.5rem 5rem;
       display: grid;
       grid-template-columns: 55fr 45fr;
       gap: 4rem;
-      align-items: center;
-      flex: 1;
+      align-items: start;
     }
 
     @keyframes up {
@@ -1547,13 +1545,6 @@
       .nav-links { display: none; }
       .nav-burger { display: flex; }
 
-      .hero-photo {
-        height: 42vw;
-        min-height: 160px;
-        max-height: none;
-        background-position: center 30%;
-      }
-
       .hero-inner {
         grid-template-columns: 1fr;
         padding: 2rem 1.5rem 3rem;
@@ -1659,7 +1650,9 @@
 
 <!-- ═══ HERO ════════════════════════════════════════════ -->
 <section class="hero" aria-label="Hero">
-  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-photo-wrap">
+    <img src="brand-assets/Background.png" alt="Center for Language Justice mural in Indianapolis" loading="eager">
+  </div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="lang-bg" id="langBg" aria-hidden="true"></div>
 
