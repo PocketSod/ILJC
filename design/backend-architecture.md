@@ -1,4 +1,4 @@
-# ILJC — Backend Architecture Decision & Data Flow
+# CLJ — Backend Architecture Decision & Data Flow
 
 ## 1. Requirements
 
@@ -40,7 +40,7 @@
 
 ### What Google Workspace Offers
 
-| Tool | ILJC Use Case | Verdict |
+| Tool | CLJ Use Case | Verdict |
 |---|---|---|
 | **Google Calendar** | Member-editable shared calendar; public embed; iCal subscribe | ✅ Excellent — best-in-class |
 | **Google Forms** | Service request intake; membership applications | ✅ Works well; no dev required |
@@ -55,15 +55,15 @@
 
 **Calendar is genuinely superior to a custom-built solution.** Members likely already use Google Calendar. Key advantages:
 - Members add/edit events in a UI they already know — zero training
-- Per-member calendars that roll up into one public "ILJC Calendar"
+- Per-member calendars that roll up into one public "CLJ Calendar"
 - Built-in iCal subscribe link — any calendar app works
-- Public Google Calendar embeds directly into the ILJC website
+- Public Google Calendar embeds directly into the CLJ website
 - Color-coded by member or service type out of the box
 - Mobile app included — no custom PWA needed
 
 **Non-technical operations.** A Google Form submission drops into a Sheet automatically. An admin can see all service requests, application responses, and member info in familiar spreadsheets. AppScript can send Gmail notifications with zero infrastructure.
 
-**Cost can be near-zero.** If even one member already has Google Workspace (or gets a personal business account), shared drives and calendars can be set up for the group. However, ILJC is an LLC — **it does not qualify for Google Workspace for Nonprofits (free).** Standard pricing is $6/user/month; if only 2–3 admins need accounts, that's $12–18/month.
+**Cost can be near-zero.** If even one member already has Google Workspace (or gets a personal business account), shared drives and calendars can be set up for the group. However, CLJ is an LLC — **it does not qualify for Google Workspace for Nonprofits (free).** Standard pricing is $6/user/month; if only 2–3 admins need accounts, that's $12–18/month.
 
 ### Where Google Workspace Falls Short
 
@@ -76,7 +76,7 @@
 
 **Google lock-in.** Everything lives in Google's ecosystem. If the coop switches tools, migrating Calendar, Drive, Forms, and Sheets data is painful. This conflicts with the cooperative's data sovereignty values.
 
-**AppScript has hard limits.** Scripts time out at 6 minutes; 20 triggers/user; 100 email recipients/day on free. For ILJC's current scale these are fine, but they're ceilings, not floors.
+**AppScript has hard limits.** Scripts time out at 6 minutes; 20 triggers/user; 100 email recipients/day on free. For CLJ's current scale these are fine, but they're ceilings, not floors.
 
 ### Google Workspace Verdict
 
@@ -273,7 +273,7 @@ flowchart TD
 
   %% ── LUMA ─────────────────────────────────────────────
   subgraph LM ["Luma (lu.ma — free)"]
-    LCAL[Luma Org Page\nILJC Events Calendar]
+    LCAL[Luma Org Page\nCLJ Events Calendar]
     LICAL[/iCal Subscribe URL/]
   end
 
@@ -363,7 +363,7 @@ Supabase (hosted, free tier)
   └── Edge Functions  → email triggers, member matching algorithm
 
 Luma (lu.ma — free org account)
-  └── One ILJC org page with public event calendar
+  └── One CLJ org page with public event calendar
   └── Each event gets its own Luma page with RSVP
   └── Embeddable calendar widget → calendar.html on the site
   └── Public iCal URL → any calendar app can subscribe
@@ -388,7 +388,7 @@ Email (Resend — free tier: 3,000 emails/month)
 ### Phase 1 — Static + Forms (no auth yet)
 - Service request form → Supabase table → admin email via Edge Function
 - Membership application form → Supabase table → admin email
-- **Public calendar: embed Luma widget** — admin creates ILJC org on lu.ma, adds upcoming events, embeds calendar widget on site (zero dev)
+- **Public calendar: embed Luma widget** — admin creates CLJ org on lu.ma, adds upcoming events, embeds calendar widget on site (zero dev)
 - Public directory from Supabase `members` table (admin-populated for now)
 - Google Drive folder set up for shared governance docs
 

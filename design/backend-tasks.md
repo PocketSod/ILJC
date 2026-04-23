@@ -1,4 +1,4 @@
-# ILJC Backend Setup — Task List
+# CLJ Backend Setup — Task List
 ### Supabase + Luma Hybrid
 
 Reference: [`design/backend-architecture.md`](./backend-architecture.md)
@@ -8,7 +8,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 ## Phase 1 — Supabase Project Setup
 
 ### 1.1 Create Project
-- [ ] Create account at [supabase.com](https://supabase.com) using ILJC admin email
+- [ ] Create account at [supabase.com](https://supabase.com) using CLJ admin email
 - [ ] Create new project: name `iljc`, region `us-east-1` (closest to Indianapolis)
 - [ ] Save project URL and anon/public API key in a secure location (password manager)
 - [ ] Save service role key securely — never expose this in frontend code
@@ -100,8 +100,8 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
   - `https://iljc.pocketsod.com/member-portal/`
   - `http://localhost:3001/member-portal/` (for local dev)
 - [ ] Customize email templates (confirm signup, magic link, password reset):
-  - Use ILJC branding (forest green, saffron, Fraunces font in HTML email)
-  - Sender name: "Indy Language Justice Cooperative"
+  - Use CLJ branding (forest green, saffron, Fraunces font in HTML email)
+  - Sender name: "Center for Language Justice"
 - [ ] Configure email rate limits (default is fine for launch)
 - [ ] Disable "confirm email" requirement initially — simplify onboarding (can re-enable later)
 
@@ -124,18 +124,18 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
 ## Phase 2 — Luma Calendar Setup
 
-### 2.1 Create the ILJC Org on Luma
-- [ ] Go to [lu.ma](https://lu.ma) and create a free account using the ILJC admin email
-- [ ] Create a new **Community / Org** (not a personal profile): name it **"Indy Language Justice Cooperative"**
+### 2.1 Create the CLJ Org on Luma
+- [ ] Go to [lu.ma](https://lu.ma) and create a free account using the CLJ admin email
+- [ ] Create a new **Community / Org** (not a personal profile): name it **"Center for Language Justice"**
 - [ ] Set the handle: `lu.ma/iljc` (or closest available)
-- [ ] Add description, logo, and cover image using ILJC brand assets
+- [ ] Add description, logo, and cover image using CLJ brand assets
 - [ ] Set timezone: `America/Indiana/Indianapolis`
 - [ ] Set location: Indianapolis, IN
 
 ### 2.2 Configure Access & Co-Hosts
 - [ ] Invite member co-hosts who will add and manage events:
   - Luma org Settings → Members → Invite by email → role "Co-host"
-- [ ] Co-hosts can create events under the ILJC org page without needing the admin password
+- [ ] Co-hosts can create events under the CLJ org page without needing the admin password
 - [ ] Create a brief guide for members: "How to add your events on Luma" (save to Google Drive)
 
 ### 2.3 Create Initial Events
@@ -145,11 +145,11 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] Set events to **public** so they appear on the org page without login
 
 ### 2.4 Embed Calendar on Website
-- [ ] Go to the ILJC Luma org page → Settings → Embed
+- [ ] Go to the CLJ Luma org page → Settings → Embed
 - [ ] Copy the embed code (Luma provides a `<script>` + `<div>` snippet)
 - [ ] Open `index.html`, find the calendar preview section (`id="calendar"`)
 - [ ] Replace the static event list HTML with the Luma embed snippet
-- [ ] Style the container to match the ILJC design (cream background, rounded corners)
+- [ ] Style the container to match the CLJ design (cream background, rounded corners)
 - [ ] Add the iCal subscribe link below the embed:
   ```html
   <a href="https://lu.ma/iljc/ics">Subscribe in your calendar app →</a>
@@ -162,7 +162,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 ## Phase 3 — Email Setup (Resend)
 
 ### 3.1 Resend Account
-- [ ] Create account at [resend.com](https://resend.com) using ILJC admin email
+- [ ] Create account at [resend.com](https://resend.com) using CLJ admin email
 - [ ] Add and verify domain: `indyljc.org` (add DNS records at domain registrar)
   - If domain not yet purchased: register `indyljc.org` at Namecheap (~$12/year)
 - [ ] Create API key — save securely
@@ -179,7 +179,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
   > Subject: New membership application — {applicant_name}
 
   **Application approved — welcome** (to new member)
-  > Subject: Welcome to ILJC, {name}!
+  > Subject: Welcome to CLJ, {name}!
   > Your account is ready. Log in at iljc.pocketsod.com/member-portal
   > View and add events on our Luma page: lu.ma/iljc
 
@@ -244,7 +244,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 
 ### 5.2 Membership Application Form
 - [ ] Create `join.html` — membership application page
-- [ ] Build form with fields: full name, email, phone, languages spoken (multi-select), services offered (checkboxes), statement ("why do you want to join ILJC?"), resume/CV upload
+- [ ] Build form with fields: full name, email, phone, languages spoken (multi-select), services offered (checkboxes), statement ("why do you want to join CLJ?"), resume/CV upload
 - [ ] Resume upload: use Supabase Storage `applications/` bucket
 - [ ] On submit: insert to `applications` table, upload resume if provided
 - [ ] Show confirmation and next-steps message
@@ -298,7 +298,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 ### 6.3 My Events Page
 - [ ] Create `member-portal/my-events.html`
 - [ ] Display message explaining Luma is used for public event management
-- [ ] Embed a direct link to the ILJC Luma org page for the member to add/manage events
+- [ ] Embed a direct link to the CLJ Luma org page for the member to add/manage events
 - [ ] Link to the member guide: "How to add your events on Luma"
 - [ ] Embed the Luma calendar widget so members can see upcoming events without leaving the portal
 
@@ -352,7 +352,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] **Admin → Approve member:** Approve the test application; verify auth account created, welcome email sent
 - [ ] **Member → Login:** Use magic link to log in as the new test member
 - [ ] **Member → Profile:** Edit name, bio, upload photo; verify changes appear in public directory
-- [ ] **Member → Calendar:** Add a test event on the ILJC Luma org page; verify it appears on the website embed
+- [ ] **Member → Calendar:** Add a test event on the CLJ Luma org page; verify it appears on the website embed
 - [ ] **Admin → Assign request:** Assign the test service request to the test member
 - [ ] **Member → Accept booking:** Test member confirms the request; verify confirmation email sent to org
 
@@ -376,7 +376,7 @@ Reference: [`design/backend-architecture.md`](./backend-architecture.md)
 - [ ] Update all `href="#"` placeholder links in `index.html` to point to real pages
 - [ ] Swap placeholder phone/email in footer with real contact info
 - [ ] Swap placeholder provider names in directory section with real members (or remove until portal is live)
-- [ ] Add real upcoming events to the ILJC Luma org page so the embed isn't empty at launch
+- [ ] Add real upcoming events to the CLJ Luma org page so the embed isn't empty at launch
 - [ ] Test Resend email deliverability (check spam, configure SPF/DKIM records)
 - [ ] Verify Supabase project is not paused (free tier pauses after 1 week of inactivity — upgrade to Pro if needed)
 - [ ] Set up Supabase project backups (Settings → Database → Backups)

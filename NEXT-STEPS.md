@@ -1,4 +1,4 @@
-# ILJC — Next Steps
+# CLJ — Next Steps
 
 ## Immediate / Launch Prep
 - [ ] Enable GitHub Pages: Settings → Pages → Deploy from branch `main` / root

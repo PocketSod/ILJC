@@ -14,7 +14,7 @@ Business Plan and Program Design
 
 # **Vision**
 
-The Indy Language Justice Cooperative (ILJC) is a worker-owned cooperative that creates sustainable livelihoods for language workers in Indianapolis and Marion County while advancing language justice across every dimension of community life. 
+The Center for Language Justice (CLJ) is a worker-owned cooperative that creates sustainable livelihoods for language workers in Indianapolis and Marion County while advancing language justice across every dimension of community life. 
 
 We envision a multilingual Indianapolis where all languages are respected, language work is valued and fairly compensated, and all people can fully participate in civic, social, and economic life in the languages that make them who they are or what the Community Language Cooperative in Denver calls *the language of their heart.*
 
@@ -24,7 +24,7 @@ We follow Sins Invalid in understanding that language justice is disability just
 
 # **Mission**
 
-The Indy Language Justice Cooperative creates multilingual spaces that foster linguistic democracy. We provide high-quality interpretation, translation, training, cultural brokering, and language justice consulting to organizations, government agencies, nonprofits, and community groups across Indianapolis and central Indiana. We create a sustainable livelihood for language workers, especially those from languages of limited diffusion communities, who have historically performed this labor for free or for poverty wages. And we advance language justice by building the capacity of communities and institutions to operate multilingually, to de-center English, and to value every language equally.
+The Center for Language Justice creates multilingual spaces that foster linguistic democracy. We provide high-quality interpretation, translation, training, cultural brokering, and language justice consulting to organizations, government agencies, nonprofits, and community groups across Indianapolis and central Indiana. We create a sustainable livelihood for language workers, especially those from languages of limited diffusion communities, who have historically performed this labor for free or for poverty wages. And we advance language justice by building the capacity of communities and institutions to operate multilingually, to de-center English, and to value every language equally.
 
 # **Values**
 
@@ -48,7 +48,7 @@ The Indy Language Justice Cooperative creates multilingual spaces that foster li
 
 ## **Cooperative Type**
 
-The ILJC is organized as a worker-owned cooperative under Indiana law. Worker-owners are the people who do the language work: interpreters, translators, trainers, consultants, and cultural brokers. The cooperative is based on consensus decision making. Major decisions about services, pricing, new members, values, and strategic direction are made collectively.
+The CLJ is organized as a worker-owned cooperative under Indiana law. Worker-owners are the people who do the language work: interpreters, translators, trainers, consultants, and cultural brokers. The cooperative is based on consensus decision making. Major decisions about services, pricing, new members, values, and strategic direction are made collectively.
 
 ## **Membership**
 
@@ -94,7 +94,7 @@ The cooperative is especially focused on translation into and from languages of 
 
 ## **Language Justice Training and Consulting**
 
-This is where the cooperative’s community roots give it a unique advantage. Drawing on the CPC Language Justice Curriculum, the CCHE Language Justice Toolkit, Antena’s How to Build Language Justice guide, and the cooperative’s own lived experience, ILJC offers:
+This is where the cooperative’s community roots give it a unique advantage. Drawing on the CPC Language Justice Curriculum, the CCHE Language Justice Toolkit, Antena’s How to Build Language Justice guide, and the cooperative’s own lived experience, CLJ offers:
 
 * **Language Justice Workshops:** Interactive trainings for organizations, government agencies, nonprofits, and coalitions on language justice principles and practices. What language justice is, how it differs from language access, how to de-center English, how to create functional multilingual spaces, and how to build organizational commitment to linguistic equity.
 

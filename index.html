@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Indy Language Justice Cooperative — worker-owned interpretation, translation, training, and cultural brokering for Indianapolis and Marion County.">
-  <title>Indy Language Justice Cooperative — Indianapolis</title>
+  <meta name="description" content="Center for Language Justice — worker-owned interpretation, translation, training, and cultural brokering for Indianapolis and Marion County.">
+  <title>Center for Language Justice — Indianapolis</title>
+  <link rel="icon" href="brand-assets/Favicon.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Center for Language Justice — Indianapolis">
+  <meta property="og:description" content="Worker-owned interpretation, translation, training, and cultural brokering for Indianapolis and Marion County.">
+  <meta property="og:image" content="brand-assets/OGlogo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="brand-assets/OGlogo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -64,25 +71,12 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
       text-decoration: none;
     }
-    .nav-logo .monogram {
-      font-family: var(--font-d);
-      font-weight: 900;
-      font-size: 1.6rem;
-      color: var(--saffron);
-      letter-spacing: 0.06em;
-      line-height: 1;
-    }
-    .nav-logo .wordmark {
-      font-family: var(--font-b);
-      font-weight: 400;
-      font-size: 0.8rem;
-      color: var(--sage-light);
-      letter-spacing: 0.01em;
-      line-height: 1.3;
-      max-width: 14ch;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      border-radius: 4px;
     }
 
     .nav-links {
@@ -118,31 +112,39 @@
     /* ─── HERO ──────────────────────────────────────── */
     .hero {
       min-height: 100svh;
-      background: var(--forest);
+      background: var(--forest) url('brand-assets/Background.png') center 35% / cover no-repeat;
       position: relative;
       display: flex;
       align-items: center;
       overflow: hidden;
     }
 
-    /* Grain overlay */
+    /* Directional scrim — dense left (text), open right (street scene) */
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,
+          rgba(12, 26, 18, 0.93) 0%,
+          rgba(12, 26, 18, 0.80) 38%,
+          rgba(12, 26, 18, 0.45) 62%,
+          rgba(12, 26, 18, 0.18) 100%),
+        linear-gradient(to bottom,
+          rgba(12, 26, 18, 0.35) 0%,
+          transparent 25%,
+          transparent 72%,
+          rgba(12, 26, 18, 0.55) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Subtle grain for depth over the photo */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Radial gradient depth */
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(200, 144, 31, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(42, 82, 64, 0.8) 0%, transparent 60%);
+      opacity: 0.3;
       pointer-events: none;
       z-index: 1;
     }
@@ -922,7 +924,7 @@
       overflow: hidden;
     }
     #join::before {
-      content: 'ILJC';
+      content: 'CLJ';
       position: absolute;
       font-family: var(--font-d);
       font-weight: 900;
@@ -983,13 +985,13 @@
       border-bottom: 1px solid rgba(107, 158, 134, 0.12);
     }
     .foot-brand .logo {
-      font-family: var(--font-d);
-      font-weight: 900;
-      font-size: 2rem;
-      color: var(--cream);
-      letter-spacing: -0.02em;
       display: block;
-      margin-bottom: 0.375rem;
+      margin-bottom: 0.75rem;
+    }
+    .foot-brand .logo img {
+      height: 48px;
+      width: auto;
+      border-radius: 4px;
     }
     .foot-brand .tagline {
       font-size: 0.8rem;
@@ -1614,9 +1616,8 @@
 
 <!-- ═══ NAV ════════════════════════════════════════════ -->
 <nav id="nav">
-  <a href="/" class="nav-logo" aria-label="ILJC Home">
-    <span class="monogram">ILJC</span>
-    <span class="wordmark">Indy Language Justice Cooperative</span>
+  <a href="/" class="nav-logo" aria-label="CLJ Home">
+    <img src="brand-assets/logo.png" alt="Center for Language Justice">
   </a>
   <ul class="nav-links" role="list">
     <li><a href="#services">Services</a></li>
@@ -1849,7 +1850,7 @@
       <div>
         <p class="sec-label on-dark">Our Model</p>
         <h2 class="sec-h2 on-dark">A cooperative <em>owned</em> by language workers</h2>
-        <p class="about-body">ILJC is a worker-owned cooperative — our interpreters, translators, and language justice professionals are the owners. Every decision, every service rate, and every value is shaped collectively by the people who do the work. No outside investors. No executive salaries. Collective power.</p>
+        <p class="about-body">CLJ is a worker-owned cooperative — our interpreters, translators, and language justice professionals are the owners. Every decision, every service rate, and every value is shaped collectively by the people who do the work. No outside investors. No executive salaries. Collective power.</p>
         <p class="about-body">Marion County has over 143,000 residents who speak a language other than English at home. Yet most commercial vendors offer nothing for languages of limited diffusion — and none for many Indigenous Latin American languages. We exist to fill that gap, rooted in the communities we serve.</p>
         <div class="pull-quote">
           <p>"To transform language culture and practice takes time, courage, humility, and commitment."</p>
@@ -1942,7 +1943,7 @@
             allowfullscreen=""
             aria-hidden="false"
             tabindex="0"
-            title="ILJC Events Calendar"
+            title="CLJ Events Calendar"
             loading="lazy"
           ></iframe>
         </div>
@@ -2053,13 +2054,13 @@
       <p class="sec-label on-dark">Impact</p>
       <h2 class="sec-h2 on-dark">Our work <em>moves</em> institutions toward equity</h2>
       <p class="about-body">When language barriers fall, communities thrive. Our members have delivered thousands of hours of services that transform how Indianapolis institutions serve multilingual residents.</p>
-      <p class="about-body" style="margin-top:1rem;">From hospital waiting rooms to school intake offices, ILJC members ensure that language is never a barrier to access, dignity, or safety.</p>
+      <p class="about-body" style="margin-top:1rem;">From hospital waiting rooms to school intake offices, CLJ members ensure that language is never a barrier to access, dignity, or safety.</p>
       <a href="#" class="btn btn-amber" style="margin-top:2rem; display:inline-flex;">See More Impact →</a>
     </div>
     <div class="case-card">
       <span class="case-tag">Case Study</span>
       <h3>Medical Interpretation Program — Hospital Partner</h3>
-      <p>ILJC built and staffed an on-call Spanish interpretation program. Qualified member interpreters were placed across departments, reducing miscommunication incidents and improving patient trust scores.</p>
+      <p>CLJ built and staffed an on-call Spanish interpretation program. Qualified member interpreters were placed across departments, reducing miscommunication incidents and improving patient trust scores.</p>
       <div class="case-metrics">
         <div class="metric"><span class="num">25%</span><span class="lbl">Reduced Wait</span></div>
         <div class="metric"><span class="num">4.8★</span><span class="lbl">Satisfaction</span></div>
@@ -2153,7 +2154,7 @@
       <div class="bylaws-icon">📜</div>
       <div class="bylaws-text">
         <h4>Bylaws in Development</h4>
-        <p>Following the example of tilde, which found that taking time with bylaws allowed them to "clarify their values and codify what it looked like to live those values as a cooperative," ILJC is investing significant time in thorough bylaws before launch. Technical assistance is being sought from the Indiana Cooperative Development Center, the Democracy at Work Institute, and sibling language justice cooperatives.</p>
+        <p>Following the example of tilde, which found that taking time with bylaws allowed them to "clarify their values and codify what it looked like to live those values as a cooperative," CLJ is investing significant time in thorough bylaws before launch. Technical assistance is being sought from the Indiana Cooperative Development Center, the Democracy at Work Institute, and sibling language justice cooperatives.</p>
         <p style="margin-top:0.5rem;">The bylaws will address:</p>
         <div class="bylaws-list">
           <span class="bylaw-tag">Membership requirements &amp; processes</span>
@@ -2289,7 +2290,7 @@
     <p class="sec-label">Join the Cooperative</p>
     <h2 class="join-h2">Own your work.<br><em>Shape our future.</em></h2>
     <p class="join-sub">
-      ILJC is built by and for language workers. If you're an interpreter, translator, cultural broker, or language justice professional in Indianapolis — we want to build this with you.
+      CLJ is built by and for language workers. If you're an interpreter, translator, cultural broker, or language justice professional in Indianapolis — we want to build this with you.
     </p>
     <div class="join-btns">
       <a href="#" class="btn btn-forest">Apply for Membership</a>
@@ -2303,8 +2304,8 @@
   <div class="foot-inner">
     <div class="foot-top">
       <div class="foot-brand">
-        <span class="logo">ILJC</span>
-        <p class="tagline">Indy Language Justice Cooperative<br>Indianapolis &amp; Marion County</p>
+        <span class="logo"><img src="brand-assets/logo.png" alt="Center for Language Justice"></span>
+        <p class="tagline">Indianapolis &amp; Marion County</p>
         <span class="coop-badge">⬡ Worker-Owned Cooperative</span>
       </div>
 
@@ -2323,7 +2324,7 @@
       <div class="foot-col">
         <h5>Cooperative</h5>
         <ul>
-          <li><a href="#about">About ILJC</a></li>
+          <li><a href="#about">About CLJ</a></li>
           <li><a href="#membership">Our Members</a></li>
           <li><a href="#join">Join the Co-op</a></li>
           <li><a href="#governance">Governance</a></li>
@@ -2345,7 +2346,7 @@
     </div>
 
     <div class="foot-bottom">
-      <p>© 2026 Indy Language Justice Cooperative · Indianapolis, Indiana</p>
+      <p>© 2026 Center for Language Justice · Indianapolis, Indiana</p>
       <p>Language is a human right.</p>
     </div>
   </div>

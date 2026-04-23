@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
 
 ## Project Structure
-Static site for DeLara Consulting LLC, deployed to GitHub Pages at `https://pocketsod.github.io/DeLara/`.
+Static site for Center for Language Justice, deployed to GitHub Pages at `https://PocketSod.github.io/CLJ/`.
 
 - `index.html`, `landing-2.html`, `landing-3.html`, `landing-4.html` — four landing page variants
 - All pages share a nav toggle widget (`<div class="page-toggle">`) linking between the four variants; keep all four toggle buttons present and consistent across pages
@@ -16,11 +16,8 @@ Static site for DeLara Consulting LLC, deployed to GitHub Pages at `https://pock
 - `screenshot-scroll.mjs` — variant for scrolled positions
 
 ## Brand Assets
-- Folder is named **`brand_assests/`** (intentional misspelling — do not correct it in paths)
-- Primary logo: `brand_assests/Logo.png` — use this in nav and hero
-- Alternate logo: `brand_assests/logo1.png`
-- Wordmarks: `brand_assests/DeLara.png`, `brand_assests/DeLara2.png`
-- Brand reference: `brand_assests/Brand-guide.png`, `brand_assests/Brand-guide1.png`
+- Folder: `brand-assets/`
+- Primary logo: `brand-assets/logo.png` — use this in nav and hero
 - Never use `mix-blend-mode: multiply` on logos placed on dark backgrounds — it makes them invisible
 - Always use real assets; do not use `placehold.co` where actual brand files exist
 

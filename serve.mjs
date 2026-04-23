@@ -42,5 +42,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`ILJC dev server → http://localhost:${PORT}`);
+  console.log(`CLJ dev server → http://localhost:${PORT}`);
 });
